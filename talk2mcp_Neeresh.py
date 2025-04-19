@@ -206,7 +206,7 @@ async def main():
                 """
 
 # Find the ASCII values of characters in INDIA and then return sum of exponentials of those values.
-                print("query is:11111", query)
+                # print("query is:11111", query)
 
                 print("Starting iteration loop...")
                 
@@ -223,13 +223,13 @@ async def main():
                         current_query = current_query + "\n\n" + " ".join(iteration_response)
                         current_query = current_query + "  What should I do next?"
 
-                    print("current_query is:11111", query)
+                    # print("current_query is:11111", query)
 
                     # Get model's response with timeout
                     print("Preparing to generate LLM response...")
                     prompt = f"{system_prompt}\n\nQuery: {current_query}"
                     
-                    print("prompt is:11111", prompt)
+                    print("Debug Statement - The PROMPT is:", prompt)
 
                     try:
                         response = await generate_with_timeout(client, prompt)
@@ -239,7 +239,7 @@ async def main():
                         # Find the FUNCTION_CALL line in the response
                         for line in response_text.split('\n'):
                             line = line.strip()
-                            print(f"line in response_text11111111: {line}")
+                            print(f"line in response_text1: {line}")
                             
                             if line.startswith("FUNCTION_CALL:"):
                                 response_text = line
