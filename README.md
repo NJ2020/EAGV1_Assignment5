@@ -1,2 +1,271 @@
-# EAGV1_Assignment5
-Planning and Reasoning with Language Models
+# EAGV1_Assignment5 : Planning and Reasoning with Language Models
+
+# The Print Logs of the applciation are:
+PS D:\CursorProjects\Assignment5> python talk2mcp_Neeresh.py
+Starting main execution...
+Establishing connection to MCP server...
+Connection established, creating session...
+Session created, initializing...
+Requesting tool list...
+Successfully retrieved 2 tools
+Creating system prompt...
+Number of tools: 2
+Added description for tool: 1. add_text_in_paint(text: string) - Add text inside the centered rectangle, save and close Paint
+Added description for tool: 2. open_paint() - Open Microsoft Paint in maximized (fullscreen) window
+Successfully created tools description 1. add_text_in_paint(text: string) - Add text inside the centered rectangle, save and close Paint
+2. open_paint() - Open Microsoft Paint in maximized (fullscreen) window
+Created system prompt...
+Starting iteration loop...
+
+--- Iteration 1 ---
+Preparing to generate LLM response...
+Debug Statement - The PROMPT is: You are a PROMPT Evaluation Assistant.
+                You will receive a PROMPT written by a student. Your job is to review this PROMPT      
+                and assess how well it supports structured, step-by-step reasoning in an LLM (e.g.,    
+                for math, logic, planning, or tool use).
+
+                Evaluate the prompt on the following criteria:
+                1. Explicit Reasoning Instructions✅
+                - Does the prompt tell the model to reason step-by-step?
+                - Does it include instructions like “explain your thinking” or “think before you answer”?
+                2. Structured Output Format✅
+                - Does the prompt enforce a predictable output format (e.g., FUNCTION_CALL, JSON, numbered steps)?
+                - Is the output easy to parse or validate?
+                3. Separation of Reasoning and Tools✅
+                - Are reasoning steps clearly separated from computation or tool-use steps?
+                - Is it clear when to calculate, when to verify, when to reason?
+                4. Conversation Loop Support✅
+                - Could this prompt work in a back-and-forth (multi-turn) setting?
+                - Is there a way to update the context with results from previous steps?
+                5. Instructional Framing✅
+                - Are there examples of desired behavior or “formats” to follow?
+                - Does the prompt define exactly how responses should look?
+                6. Internal Self-Checks✅
+                - Does the prompt instruct the model to self-verify or sanity-check intermediate steps?
+                7. Reasoning Type Awareness✅
+                - Does the prompt encourage the model to tag or identify the type of reasoning used (e.g., arithmetic, logic, lookup)?
+                8. Error Handling or Fallbacks✅
+                - Does the prompt specify what to do if an answer is uncertain, a tool fails, or the model is unsure?
+                9. Overall Clarity and Robustness✅
+                - Is the prompt easy to follow?
+                - Is it likely to reduce hallucination and drift?
+
+                Respond with a structured review in this format:
+                ```json
+                {
+                "explicit_reasoning": true,
+                "structured_output": true,
+                "tool_separation": true,
+                "conversation_loop": true,
+                "instructional_framing": true,
+                "internal_self_checks": false,
+                "reasoning_type_awareness": false,
+                "fallbacks": false,
+                "overall_clarity": "A custom message e.g. Excellent structure, but could improve with self-checks and error fallbacks."
+                }
+
+
+                Evaluate the below PROMPT. After evaluating the PROMPT, also execute the PROMPT.       
+
+
+
+Query:  The PROMPT is:
+                Step1: Open Microsoft Paint. Step2: Add text 'INDIA' in the Rectangle in Paint
+
+                Available tools:
+                {tools_description}
+
+                You must respond with EXACTLY ONE line in one of these formats (no additional text):   
+                1. For function calls:
+                FUNCTION_CALL: function_name|param1|param2|...
+
+                2. For final outputs:
+                FINAL_ANSWER: [string value returend by the function call]
+
+                Examples:
+                - FUNCTION_CALL: draw_rectangle|10|50|10|50
+                - FUNCTION_CALL: add_text_in_paint|INDIA
+                - FINAL_ANSWER: open_paint function called....1111
+
+                DO NOT include any explanations or additional text.
+                Your entire response should be a single line starting with either FUNCTION_CALL: or FINAL_ANSWER:
+
+
+Starting LLM generation...
+LLM generation completed
+LLM Response: ```json
+{
+  "explicit_reasoning": false,
+  "structured_output": true,
+  "tool_separation": true,
+  "conversation_loop": false,
+  "instructional_framing": true,
+  "internal_self_checks": false,
+  "reasoning_type_awareness": false,
+  "fallbacks": false,
+  "overall_clarity": "The prompt provides a clear structure with examples for tool use, but it lacks explicit instructions for step-by-step reasoning or error handling. It also doesn't include any internal self-checks to ensure accuracy."
+}
+```
+
+**Execution of the Prompt:**
+
+Assuming that the `tools_description` variable is populated with relevant information about available functions such as `open_paint`, `draw_rectangle`, and `add_text_in_paint`, the prompt would be executed as follows.
+
+Based on the prompt's instructions to follow the given steps and examples, here's a plausible execution:
+
+FUNCTION_CALL: open_paint
+line in response_text1: ```json
+line in response_text1: {
+line in response_text1: "explicit_reasoning": false,
+line in response_text1: "structured_output": true,
+line in response_text1: "tool_separation": true,
+line in response_text1: "conversation_loop": false,
+line in response_text1: "instructional_framing": true,
+line in response_text1: "internal_self_checks": false,
+line in response_text1: "reasoning_type_awareness": false,
+line in response_text1: "fallbacks": false,
+line in response_text1: "overall_clarity": "The prompt provides a clear structure with examples for tool use, but it lacks explicit instructions for step-by-step reasoning or error handling. It also doesn't include any internal self-checks to ensure accuracy."
+line in response_text1: }
+line in response_text1: ```
+line in response_text1:
+line in response_text1: **Execution of the Prompt:**
+line in response_text1:
+line in response_text1: Assuming that the `tools_description` variable is populated with relevant information about available functions such as `open_paint`, `draw_rectangle`, and `add_text_in_paint`, the prompt would be executed as follows.
+line in response_text1:
+line in response_text1: Based on the prompt's instructions to follow the given steps and examples, here's a plausible execution:
+line in response_text1:
+line in response_text1: FUNCTION_CALL: open_paint
+
+DEBUG: Raw function info:  open_paint
+DEBUG: Split parts: ['open_paint']
+DEBUG: Function name: open_paint
+DEBUG: Raw parameters: []
+DEBUG: Found tool: open_paint
+DEBUG: Tool schema: {'properties': {}, 'title': 'open_paintArguments', 'type': 'object'}
+DEBUG: Schema properties: {}
+DEBUG: Final arguments: {}
+DEBUG: Calling tool open_paint
+DEBUG: Raw result: meta=None content=[TextContent(type='text', text='{"content": [{"type": "text", "text": "Paint opened in full screen.", "annotations": null}]}', annotations=None)] isError=False
+DEBUG: Result has content attribute
+DEBUG: Final iteration result: ['{"content": [{"type": "text", "text": "Paint opened in full screen.", "annotations": null}]}']
+
+--- Iteration 2 ---
+Preparing to generate LLM response...
+Debug Statement - The PROMPT is: You are a PROMPT Evaluation Assistant.
+                You will receive a PROMPT written by a student. Your job is to review this PROMPT      
+                and assess how well it supports structured, step-by-step reasoning in an LLM (e.g.,    
+                for math, logic, planning, or tool use).
+
+                Evaluate the prompt on the following criteria:
+                1. Explicit Reasoning Instructions✅
+                - Does the prompt tell the model to reason step-by-step?
+                - Does it include instructions like “explain your thinking” or “think before you answer”?
+                2. Structured Output Format✅
+                - Does the prompt enforce a predictable output format (e.g., FUNCTION_CALL, JSON, numbered steps)?
+                - Is the output easy to parse or validate?
+                3. Separation of Reasoning and Tools✅
+                - Are reasoning steps clearly separated from computation or tool-use steps?
+                - Is it clear when to calculate, when to verify, when to reason?
+                4. Conversation Loop Support✅
+                - Could this prompt work in a back-and-forth (multi-turn) setting?
+                - Is there a way to update the context with results from previous steps?
+                5. Instructional Framing✅
+                - Are there examples of desired behavior or “formats” to follow?
+                - Does the prompt define exactly how responses should look?
+                6. Internal Self-Checks✅
+                - Does the prompt instruct the model to self-verify or sanity-check intermediate steps?
+                7. Reasoning Type Awareness✅
+                - Does the prompt encourage the model to tag or identify the type of reasoning used (e.g., arithmetic, logic, lookup)?
+                8. Error Handling or Fallbacks✅
+                - Does the prompt specify what to do if an answer is uncertain, a tool fails, or the model is unsure?
+                9. Overall Clarity and Robustness✅
+                - Is the prompt easy to follow?
+                - Is it likely to reduce hallucination and drift?
+
+                Respond with a structured review in this format:
+                ```json
+                {
+                "explicit_reasoning": true,
+                "structured_output": true,
+                "tool_separation": true,
+                "conversation_loop": true,
+                "instructional_framing": true,
+                "internal_self_checks": false,
+                "reasoning_type_awareness": false,
+                "fallbacks": false,
+                "overall_clarity": "A custom message e.g. Excellent structure, but could improve with self-checks and error fallbacks."
+                }
+
+
+                Evaluate the below PROMPT. After evaluating the PROMPT, also execute the PROMPT.       
+
+
+
+Query:  The PROMPT is:
+                Step1: Open Microsoft Paint. Step2: Add text 'INDIA' in the Rectangle in Paint
+
+                Available tools:
+                {tools_description}
+
+                You must respond with EXACTLY ONE line in one of these formats (no additional text):   
+                1. For function calls:
+                FUNCTION_CALL: function_name|param1|param2|...
+
+                2. For final outputs:
+                FINAL_ANSWER: [string value returend by the function call]
+
+                Examples:
+                - FUNCTION_CALL: draw_rectangle|10|50|10|50
+                - FUNCTION_CALL: add_text_in_paint|INDIA
+                - FINAL_ANSWER: open_paint function called....1111
+
+                DO NOT include any explanations or additional text.
+                Your entire response should be a single line starting with either FUNCTION_CALL: or FINAL_ANSWER:
+
+
+
+In the 1 iteration you called open_paint with {} parameters, and the function returned [{"content": [{"type": "text", "text": "Paint opened in full screen.", "annotations": null}]}].  What should I do next?
+Starting LLM generation...
+LLM generation completed
+LLM Response: ```json
+{
+"explicit_reasoning": false,
+"structured_output": true,
+"tool_separation": true,
+"conversation_loop": true,
+"instructional_framing": true,
+"internal_self_checks": false,
+"reasoning_type_awareness": false,
+"fallbacks": false,
+"overall_clarity": "Good structure for tool use. Clear output format and conversational support. Could benefit from explicit reasoning instructions and error handling."
+}
+```
+FUNCTION_CALL: add_text_in_paint|INDIA
+line in response_text1: ```json
+line in response_text1: {
+line in response_text1: "explicit_reasoning": false,
+line in response_text1: "structured_output": true,
+line in response_text1: "tool_separation": true,
+line in response_text1: "conversation_loop": true,
+line in response_text1: "instructional_framing": true,
+line in response_text1: "internal_self_checks": false,
+line in response_text1: "reasoning_type_awareness": false,
+line in response_text1: "fallbacks": false,
+line in response_text1: "overall_clarity": "Good structure for tool use. Clear output format and conversational support. Could benefit from explicit reasoning instructions and error handling."
+line in response_text1: }
+line in response_text1: ```
+line in response_text1: FUNCTION_CALL: add_text_in_paint|INDIA
+
+DEBUG: Raw function info:  add_text_in_paint|INDIA
+DEBUG: Split parts: ['add_text_in_paint', 'INDIA']
+DEBUG: Function name: add_text_in_paint
+DEBUG: Raw parameters: ['INDIA']
+DEBUG: Found tool: add_text_in_paint
+DEBUG: Tool schema: {'properties': {'text': {'title': 'Text', 'type': 'string'}}, 'required': ['text'], 'title': 'add_text_in_paintArguments', 'type': 'object'}
+DEBUG: Schema properties: {'text': {'title': 'Text', 'type': 'string'}}
+DEBUG: Converting parameter text with value INDIA to type string
+DEBUG: Final arguments: {'text': 'INDIA'}
+DEBUG: Calling tool add_text_in_paint
+DEBUG: Raw result: meta=None content=[TextContent(type='text', text='{"content": [{"type": "text", "text": "Error: ", "annotations": null}]}', annotations=None)] isError=False
+DEBUG: Result has content attribute
+DEBUG: Final iteration result: ['{"content": [{"type": "text", "text": "Error: ", "annotations": null}]}']
